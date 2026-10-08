@@ -1,5 +1,7 @@
 from PIL import Image
 import numpy as np
+
+
 def lzw_encode(data):
     dictionary = {bytes([i]): i for i in range(256)}
     next_code = 256
@@ -18,6 +20,8 @@ def lzw_encode(data):
     if w:
         compressed.append(dictionary[w])
     return compressed
+
+
 def lzw_decode(compressed):
     dictionary = {i: bytes([i]) for i in range(256)}
     next_code = 256
@@ -35,6 +39,8 @@ def lzw_decode(compressed):
         next_code += 1
         w = entry
     return np.frombuffer(output, dtype=np.uint8)
+
+
 image = Image.open("img_2.jpg").convert("L")
 img_array = np.array(image)
 pixels = img_array.flatten()

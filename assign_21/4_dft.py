@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
+
 image = Image.open("img_2.jpg").convert("L")
 img = np.array(image, dtype=np.float64)
 img = img[:64, :64]

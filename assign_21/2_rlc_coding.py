@@ -1,5 +1,7 @@
 from PIL import Image
 import numpy as np
+
+
 def rlc_encode(pixels):
     encoded = []
     current = pixels[0]
@@ -13,11 +15,15 @@ def rlc_encode(pixels):
             count = 1
     encoded.append((int(current), count))
     return encoded
+
+
 def rlc_decode(encoded):
     decoded = []
     for pixel, count in encoded:
         decoded.extend([pixel] * count)
     return np.array(decoded, dtype=np.uint8)
+
+
 image = Image.open("img_2.jpg").convert("L")
 img_array = np.array(image)
 pixels = img_array.flatten()

@@ -23,6 +23,8 @@ def arithmetic_encode(data):
         low = low + current_range * symbol_low
     encoded_value = (low + high) / 2
     return encoded_value, freq, low, high
+
+
 def arithmetic_decode(encoded_value, freq, data_length):
     total = sum(freq.values())
     symbols = sorted(freq.keys())
@@ -47,6 +49,8 @@ def arithmetic_decode(encoded_value, freq, data_length):
                 low = low + current_range * symbol_low
                 break
     return decoded
+
+
 input_file = "img_1.jpeg"
 output_file = "fig_1.png"
 image = Image.open(input_file).convert("L")
