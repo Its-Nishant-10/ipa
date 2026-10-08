@@ -1,0 +1,21 @@
+import cv2
+import matplotlib.pyplot as plt
+
+img = cv2.imread("img_5.jpeg")
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+R, G, B = cv2.split(img_rgb)
+R_eq = cv2.equalizeHist(R)
+G_eq = cv2.equalizeHist(G)
+B_eq = cv2.equalizeHist(B)
+equalized = cv2.merge([R_eq, G_eq, B_eq])
+plt.figure(figsize=(10, 5))
+plt.subplot(1, 2, 1)
+plt.imshow(img_rgb)
+plt.title("Original Color Image")
+plt.axis("off")
+plt.subplot(1, 2, 2)
+plt.imshow(equalized)
+plt.title("RGB Histogram Equalized")
+plt.axis("off")
+plt.tight_layout()
+plt.show()
