@@ -1,0 +1,25 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+image = cv2.imread("img_2.jpeg")
+if image is None:
+    raise FileNotFoundError("Place image.jpg in the working directory")
+image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+kernel = np.ones((5, 5), np.uint8)
+dilated = cv2.dilate(image, kernel, iterations=1)
+eroded = cv2.erode(image, kernel, iterations=1)
+plt.figure(figsize=(12, 5))
+plt.subplot(1, 3, 1)
+plt.imshow(image)
+plt.title("Original Color Image")
+plt.axis("off")
+plt.subplot(1, 3, 2)
+plt.imshow(dilated)
+plt.title("Dilated Image")
+plt.axis("off")
+plt.subplot(1, 3, 3)
+plt.imshow(eroded)
+plt.title("Eroded Image")
+plt.axis("off")
+plt.tight_layout()
+plt.show()
